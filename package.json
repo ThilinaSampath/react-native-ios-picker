@@ -1,5 +1,5 @@
 {
-  "name": "react-native-ios-picker",
+  "name": "react-native-ios-picker-enhanced",
   "version": "1.0.0",
   "description": "",
   "main": "./src",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sanpyaelin/react-native-ios-picker.git"
+    "url": "git+https://github.com/ThilinaSampath/react-native-ios-picker.git"
   },
   "keywords": [
     "react",
