@@ -37,7 +37,7 @@ class IOSPicker extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if ( this.props.data == null && nextProps.selectedValue !== this.state.selectedValue) {
+    if ( this.props.data == null && nextProps.selectedValue) {
       this.setState({
         selectedValue: nextProps.selectedValue,
       });
