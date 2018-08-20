@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import CollapseView from 'react-native-collapse-view';
-import { Text, View, TouchableOpacity , StyleSheet, PickerIOS, Modal } from 'react-native';
+import { Text, View, TouchableOpacity , StyleSheet, PickerIOS, Modal, Image } from 'react-native';
+
+const ARROW_IMAGE = require('../images/drop-down-arrow.png');
 
 const propTypes = {
   mode: PropTypes.string,
@@ -93,12 +95,13 @@ class IOSPicker extends Component {
     const { style, textStyle } = this.props;
     return (
     <View>
+      <Image source={this.props.arrowImage?this.props.arrowImage:ARROW_IMAGE} style={[defaultStyles.dropDownArrow]} />
       <TouchableOpacity 
         activeOpacity={0.5}
         onPress={this.pressItem}
         style={[defaultStyles.container,style]}
       >
-        <Text style={textStyle}>
+        <Text style={[defaultStyles.textPadding, textStyle]} numberOfLines={1} ellipsizeMode='tail'>
           {this.state.selectedValue}
         </Text>
       </TouchableOpacity>
@@ -110,6 +113,7 @@ class IOSPicker extends Component {
     const { children, data, style, textStyle, pickerStyle, pickerItemStyle, disabled, mode} = this.props;
     return (
     <View>
+      
       <Modal transparent visible={this.state.modalVisible} animationType='fade'>
         <TouchableOpacity activeOpacity={1} onPress={() => this.setState({modalVisible:false})} style={defaultStyles.overlay}>
           <View style={defaultStyles.picker}>
@@ -155,7 +159,19 @@ const defaultStyles = StyleSheet.create({
   },
   picker2: {
     backgroundColor: 'white'
-  }
+  },
+  dropDownArrow: {
+    zIndex: 3,
+    position: 'absolute',
+    top: 22,
+    right: 10,
+    width: 10,
+    height: 10, 
+    alignSelf: 'flex-end'
+  },
+  textPadding: {
+    paddingRight: 20
+  },
 });
 
 IOSPicker.propTypes = propTypes;
